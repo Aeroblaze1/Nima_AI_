@@ -1,0 +1,101 @@
+food_item,category,allergens_present,cross_contaminated_with,contamination_risk_level
+Almond,Nut and seed,Nut Allergy,Peanuts,High
+Apple,Fruit,Oral Allergy Syndrome,Tree Pollen,Medium
+Apricot,Fruit,Stone Fruit Allergy,None,Low
+Artichoke,Vegetable,Insulin Allergy,None,Low
+Asparagus,Vegetable,Allium Allergy,None,Low
+Avocado,Fruit,Oral Allergy Syndrome,Latex,Medium
+Barley,Cereal,Gluten Allergy,Wheat,High
+Bean,Legume,Legume Allergy,Soy,Medium
+Blackberry,Fruit,Salicylate Allergy,None,Low
+Butter,Dairy,Milk Allergy / Lactose Intolerance,Casein,High
+Broccoli,Vegetable,Broccoli Allergy,None,Low
+Cheese,Dairy,Milk Allergy / Lactose Intolerance,Casein,High
+Chicken,Poultry,Poultry Allergy,None,Low
+Cabbage,Vegetable,Cruciferous Allergy,None,Low
+Coffee Bean,Nut and seed,Ochratoxin Allergy,None,Medium
+Corn,Cereal,Corn Allergy,Gluten,High
+Cream,Dairy,Milk Allergy,None,Low
+Egg,Poultry,Egg Allergy,None,Low
+Grape,Fruit,LTP Allergy,Pollen,Medium
+Grapefruit,Fruit,Citrus Allergy,None,Low
+Hazelnut,Nut and seed,Nut Allergy,Tree Nuts,High
+Kiwi,Fruit,Oral Allergy Syndrome,Latex,Medium
+Lentil,Legume,Legume Allergy,Soy,Medium
+Mango,Fruit,Oral Allergy Syndrome,None,Low
+Milk,Dairy,Milk Allergy,Lactose,High
+Mushroom,Vegetable,Mushroom Allergy,None,Low
+Mustard,Vegetable,Mustard Allergy,None,Low
+Nutmeg,Spice,Spice Allergy,None,Low
+Oat,Cereal,Gluten Allergy,None,Low
+Olive,Fruit,Olive Allergy,None,Low
+Orange,Fruit,Citrus Allergy,None,Low
+Papaya,Fruit,Oral Allergy Syndrome,None,Low
+Peach,Fruit,Stone Fruit Allergy,None,Low
+Peanut,Nut and seed,Peanut Allergy,Soy,High
+Pear,Fruit,Oral Allergy Syndrome,None,Low
+Pecan,Nut and seed,Nut Allergy,None,High
+Pineapple,Fruit,Oral Allergy Syndrome,None,Low
+Pistachio,Nut and seed,Nut Allergy,None,High
+Plum,Fruit,Stone Fruit Allergy,None,Low
+Pomegranate,Fruit,Oral Allergy Syndrome,None,Low
+Potato,Vegetable,Potato Allergy,None,Low
+Pumpkin,Vegetable,Pumpkin Allergy,None,Low
+Quinoa,Cereal,Gluten Allergy,None,Low
+Radish,Vegetable,Hypersensitivity,None,Low
+Raspberry,Fruit,Salicylate Allergy,None,Low
+Rice,Cereal,Rice Allergy,None,Low
+Rye,Cereal,Gluten Allergy,None,High
+Sesame,Nut and seed,Seed Allergy,None,High
+Shrimp,Aquatic,Shellfish Allergy,None,High
+Soybean,Legume,Soy Allergy,None,Medium
+Spinach,Vegetable,Histamine Allergy,None,Low
+Squash,Vegetable,None,None,Low
+Strawberry,Fruit,Salicylate Allergy,None,Low
+Sugar,Vegetable,Sugar Allergy,None,Low
+Sweet Potato,Vegetable,Potato Allergy,None,Low
+Tea,Beverage,Tannin Allergy,None,Medium
+Tomato,Vegetable,Nightshade Allergy,None,Low
+Tuna,Aquatic,Fish Allergy,None,High
+Turkey,Poultry,Poultry Allergy,None,Low
+Walnut,Nut and seed,Nut Allergy,None,High
+Watermelon,Fruit,None,None,Low
+Wheat,Cereal,Gluten Allergy,None,High
+Yogurt,Dairy,Milk Allergy,Lactose,High
+Zucchini,Vegetable,None,None,Low
+Blueberry,Fruit,Salicylate Allergy,None,Low
+Cranberry,Fruit,Salicylate Allergy,None,Low
+Black Bean,Legume,Legume Allergy,Soy,Medium
+Chickpea,Legume,Legume Allergy,None,Medium
+Lentils,Legume,Legume Allergy,None,Medium
+Red Kidney Bean,Legume,Legume Allergy,Soy,Medium
+Green Bean,Legume,Legume Allergy,None,Low
+Edamame,Legume,Soy Allergy,None,Medium
+Cashew,Nut and seed,Nut Allergy,None,High
+Brazil Nut,Nut and seed,Nut Allergy,None,High
+Pistachio,Nut and seed,Nut Allergy,None,High
+Hazelnut,Nut and seed,Nut Allergy,None,High
+Macadamia,Nut and seed,Nut Allergy,None,High
+Poppy Seed,Nut and seed,Seed Allergy,None,High
+Chia Seed,Nut and seed,Seed Allergy,None,Medium
+Flaxseed,Nut and seed,Seed Allergy,None,Medium
+Sunflower Seed,Nut and seed,Seed Allergy,None,High
+Pumpkin Seed,Nut and seed,Seed Allergy,None,High
+Coconut,Fruit,None,None,Low
+Kiwi,Fruit,Oral Allergy Syndrome,Latex,Medium
+Guava,Fruit,Oral Allergy Syndrome,None,Low
+Papaya,Fruit,Oral Allergy Syndrome,None,Low
+Passion Fruit,Fruit,Oral Allergy Syndrome,None,Low
+Mandarin,Fruit,Citrus Allergy,None,Low
+Clementine,Fruit,Citrus Allergy,None,Low
+Lime,Fruit,Citrus Allergy,None,Low
+Grapefruit,Fruit,Citrus Allergy,None,Low
+Orange,Fruit,Citrus Allergy,None,Low
+Melon,Fruit,None,None,Low
+Cantaloupe,Fruit,None,None,Low
+Honeydew,Fruit,None,None,Low
+Grape,Fruit,LTP Allergy,Pollen,Medium
+Guava,Fruit,Oral Allergy Syndrome,None,Low
+Pomegranate,Fruit,Oral Allergy Syndrome,None,Low
+Plum,Fruit,Stone Fruit Allergy,None,Low
+Apricot,Fruit,Stone Fruit Allergy,None,Low

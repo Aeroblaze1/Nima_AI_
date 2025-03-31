@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Allergen Predictor</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+      }
+      .container {
+        width: 50%;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      input,
+      button {
+        padding: 10px;
+        margin: 10px;
+        width: 90%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .results {
+        margin-top: 15px;
+        padding: 10px;
+        background: #e9f5ff;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Upload an Image of Ingredients to check for Cross Contamination</h2>
+      <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required />
+        <br />
+        <label for="allergy_type">Your Allergy Type:</label>
+        <input type="text" name="allergy_type" required />
+        <br />
+        <label for="severity">Allergy Severity (1-5):</label>
+        <input type="number" name="severity" min="1" max="5" required />
+        <br />
+        <button type="submit">Predict</button>
+      </form>
+
+      {% if prediction %}
+      <div class="results">
+        <h3>Results:</h3>
+        <p><b>Allergen Status:</b> {{ prediction['Allergen Status'] }}</p>
+        <p>
+          <b>Contamination Risk Level:</b> {{ prediction['Contamination Risk
+          Level'] }}
+        </p>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>

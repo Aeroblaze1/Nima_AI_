@@ -1,0 +1,13 @@
+
+flask
+flask-cors
+tensorflow  
+numpy
+pandas
+scikit-learn
+pytesseract
+opencv-python
+Pillow  
+gunicorn
+werkzeug
+pickle

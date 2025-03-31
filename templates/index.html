@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nima AI - Allergy Detection App</title>
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a56d4;
+      --secondary: #4cc9f0;
+      --accent: #f72585;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --success: #4CAF50;
+      --danger: #dc3545;
+      --warning: #ffc107;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+    
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    
+    header h1 {
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    
+    header p {
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .form-container {
+      padding: 30px;
+    }
+    
+    .form-group {
+      margin-bottom: 25px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    
+    input[type=text], input[type=number] {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    input[type=text]:focus, input[type=number]:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+    
+    .file-upload {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      background-color: #f8f9fa;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .file-upload:hover {
+      border-color: var(--primary);
+      background-color: rgba(67, 97, 238, 0.05);
+    }
+    
+    .file-upload.active {
+      border-color: var(--success);
+      background-color: rgba(76, 175, 80, 0.05);
+    }
+    
+    .file-upload input[type=file] {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+    
+    .file-upload-icon {
+      font-size: 40px;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    
+    .file-upload p {
+      margin-bottom: 5px;
+    }
+    
+    .file-name {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--primary);
+      display: none;
+    }
+    
+    .rating-container {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .stars {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+    
+    .stars input {
+      display: none;
+    }
+    
+    .stars label {
+      cursor: pointer;
+      font-size: 30px;
+      color: #ccc;
+      transition: color 0.3s ease;
+      margin-right: 5px;
+    }
+    
+    .stars label:hover,
+    .stars label:hover ~ label,
+    .stars input:checked ~ label {
+      color: var(--warning);
+    }
+    
+    .rating-text {
+      margin-top: 10px;
+      font-size: 16px;
+      color: var(--dark);
+    }
+    
+    .submit-btn {
+      background-color: var(--primary);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 10px;
+    }
+    
+    .submit-btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+    }
+    
+    .allergy-tags {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      gap: 10px;
+    }
+    
+    .allergy-tag {
+      background-color: rgba(67, 97, 238, 0.1);
+      color: var(--primary);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .allergy-tag .remove {
+      cursor: pointer;
+      font-weight: bold;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+      font-size: 14px;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        border-radius: 0;
+      }
+      
+      .form-container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Nima AI: Allergy Detection</h1>
+      <p>Upload a food label image to instantly check if it contains ingredients you're allergic to</p>
+    </header>
+    
+    <div class="form-container">
+      <form id="allergyForm" method="POST" action="/predict" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="label_image">Food Label Image:</label>
+          <div class="file-upload" id="fileUpload">
+            <div class="file-upload-icon">📷</div>
+            <p><strong>Drag and drop</strong> an image here or <strong>click</strong> to browse</p>
+            <p class="file-name" id="fileName"></p>
+            <input type="file" id="label_image" name="label_image" accept="image/*" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="user_allergies_input">Your Allergies:</label>
+          <input type="text" id="user_allergies_input" placeholder="Type an allergy and press Enter (e.g., peanuts, dairy)">
+          <div class="allergy-tags" id="allergyTags"></div>
+          <input type="hidden" id="user_allergies" name="user_allergies">
+        </div>
+        
+        <div class="form-group">
+          <label>Your Allergy Severity:</label>
+          <div class="rating-container">
+            <div class="stars">
+              <input type="radio" id="star5" name="allergy_rating" value="5" required>
+              <label for="star5">★</label>
+              <input type="radio" id="star4" name="allergy_rating" value="4">
+              <label for="star4">★</label>
+              <input type="radio" id="star3" name="allergy_rating" value="3">
+              <label for="star3">★</label>
+              <input type="radio" id="star2" name="allergy_rating" value="2">
+              <label for="star2">★</label>
+              <input type="radio" id="star1" name="allergy_rating" value="1">
+              <label for="star1">★</label>
+            </div>
+            <div class="rating-text" id="ratingText">Select severity level</div>
+          </div>
+        </div>
+        
+        <button type="submit" class="submit-btn">Analyze Food Label</button>
+      </form>
+    </div>
+  </div>
+  
+  <footer>
+    &copy; 2025 Nima AI. Advanced allergy detection powered by artificial intelligence.
+  </footer>
+  
+  <script>
+    // File upload handling
+    const fileUpload = document.getElementById('fileUpload');
+    const fileInput = document.getElementById('label_image');
+    const fileName = document.getElementById('fileName');
+    
+    fileInput.addEventListener('change', function(e) {
+      if (this.files && this.files.length > 0) {
+        fileName.textContent = this.files[0].name;
+        fileName.style.display = 'block';
+        fileUpload.classList.add('active');
+      }
+    });
+    
+    // Drag and drop functionality
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      fileUpload.addEventListener(eventName, preventDefaults, false);
+    });
+    
+    function preventDefaults(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
+    ['dragenter', 'dragover'].forEach(eventName => {
+      fileUpload.addEventListener(eventName, highlight, false);
+    });
+    
+    ['dragleave', 'drop'].forEach(eventName => {
+      fileUpload.addEventListener(eventName, unhighlight, false);
+    });
+    
+    function highlight() {
+      fileUpload.classList.add('active');
+    }
+    
+    function unhighlight() {
+      fileUpload.classList.remove('active');
+    }
+    
+    fileUpload.addEventListener('drop', handleDrop, false);
+    
+    function handleDrop(e) {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      fileInput.files = files;
+      
+      if (files && files.length > 0) {
+        fileName.textContent = files[0].name;
+        fileName.style.display = 'block';
+      }
+    }
+    
+    // Allergy tags handling
+    const allergiesInput = document.getElementById('user_allergies_input');
+    const userAllergiesField = document.getElementById('user_allergies');
+    const allergyTags = document.getElementById('allergyTags');
+    let allergies = [];
+    
+    // Add default allergies
+    addDefaultAllergies();
+    
+    function addDefaultAllergies() {
+      const commonAllergies = ['Peanuts', 'Dairy', 'Gluten', 'Eggs', 'Tree Nuts'];
+      commonAllergies.forEach(allergy => {
+        allergies.push(allergy);
+      });
+      renderAllergies();
+    }
+    
+    allergiesInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ',') {
+        e.preventDefault();
+        addAllergy();
+      }
+    });
+    
+    function addAllergy() {
+      const allergy = allergiesInput.value.trim();
+      if (allergy && !allergies.includes(allergy)) {
+        allergies.push(allergy);
+        renderAllergies();
+        allergiesInput.value = '';
+      }
+    }
+    
+    function removeAllergy(index) {
+      allergies.splice(index, 1);
+      renderAllergies();
+    }
+    
+    function renderAllergies() {
+      allergyTags.innerHTML = '';
+      allergies.forEach((allergy, index) => {
+        const tag = document.createElement('div');
+        tag.className = 'allergy-tag';
+        tag.innerHTML = `${allergy} <span class="remove" onclick="removeAllergy(${index})">×</span>`;
+        allergyTags.appendChild(tag);
+      });
+      
+      userAllergiesField.value = allergies.join(',');
+    }
+    
+    // Rating stars handling
+    const ratingInputs = document.querySelectorAll('.stars input');
+    const ratingText = document.getElementById('ratingText');
+    const ratingDescriptions = [
+      "Mild - Causes minor discomfort",
+      "Moderate - Noticeable symptoms",
+      "Serious - Significant reaction",
+      "Severe - Medical attention needed",
+      "Extreme - Life-threatening reaction"
+    ];
+    
+    // Set default rating
+    document.getElementById('star3').checked = true;
+    ratingText.textContent = ratingDescriptions[2];
+    
+    ratingInputs.forEach((input) => {
+      input.addEventListener('change', function() {
+        ratingText.textContent = ratingDescriptions[Number(this.value) - 1];
+      });
+    });
+    
+    // Form submission - no validation needed since we have default allergies
+    document.getElementById('allergyForm').addEventListener('submit', function(e) {
+      // Make sure we have the allergies in the hidden field
+      userAllergiesField.value = allergies.join(',');
+    });
+  </script>
+</body>
+</html>
